@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/stylesheets/show.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1 class="mb-1 restaurant-show-title">{{store.name}}</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-10 mx-auto">
+
+        <p class="mb-1">
+          <span class="text-secondary">
+            <i class="fas fa-utensils pr-2"></i>
+            類別：
+          </span>
+          {{store.category}}
+        </p>
+
+        <p class="mb-1">
+          <span class="text-secondary">
+            <i class="fas fa-map-marker-alt pr-2"></i>
+            地址：
+          </span>
+          {{store.location}}
+          <a href="{{store.google_map}}" class="text-secondary" target="_blank">
+            <i class="fas fa-location-arrow pr-2 fa-xs"></i>
+          </a>
+        </p>
+
+        <p class="mb-1">
+          <span class="text-secondary">
+            <i class="fas fa-mobile-alt pr-2"></i>
+            電話：
+          </span>
+          {{store.phone}}
+        </p>
+
+        <p class="mb-5">
+          {{store.description}}
+        </p>
+
+        <img class="rounded mx-auto d-block mb-4 w-100" src="{{store.image}}" alt="{{store.name}}" style="max-width: 600px;">
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
