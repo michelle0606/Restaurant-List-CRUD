@@ -18,17 +18,13 @@ app.get("/", (req, res) => {
 });
 
 app.get("/restaurants/:store_id", (req, res) => {
-  console.log("req.params.store_id", req.params.store_id);
   const store = restaurantList.results.filter(
     store => Number(store.id) === Number(req.params.store_id)
   );
-  console.log(store);
-
   res.render("show", { store: store[0] });
 });
 
 app.get("/search", (req, res) => {
-  console.log("req.query", req.query);
   const keyword = req.query.keyword;
   const stores = restaurantList.results.filter(store => {
     return store.name.includes(keyword) || store.category.includes(keyword);
