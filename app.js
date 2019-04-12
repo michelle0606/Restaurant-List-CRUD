@@ -4,6 +4,18 @@ const app = express();
 const port = 3000;
 const exphbs = require("express-handlebars");
 const restaurantList = require("./restaurant.json");
+const mongoose = require("mongoose");
+
+mongoose.connect("mongodb://localhost/restaurant", { useNewUrlParser: true });
+const db = mongoose.connection;
+
+db.on("error", () => {
+  console.log("db error");
+});
+
+db.once("open", () => {
+  console.log("db connected!");
+});
 
 // setting template engine
 app.engine("handlebars", exphbs({ defaultLayout: "main" })); //定義要使用的樣板引擎("名稱", "相關設定")
