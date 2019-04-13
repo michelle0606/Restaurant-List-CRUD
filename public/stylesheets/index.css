@@ -86,6 +86,45 @@ header {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+.button-box {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.button-box a,
+.button-box form {
+  padding-right: 15px;
+  color: #666666;
+  align-items: center;
+  display: flex;
+}
+
+.add {
+  position: absolute;
+  right: 150px;
+  top: 8px;
+  font-size: 18px;
+  border: 1px solid #4592af;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.add:hover {
+  color: white;
+  background-color: #4592af;
+}
+.add > a {
+  color: #4592af;
+  padding: 5px 10px;
+}
+
+.add > a:hover {
+  color: white;
+  text-decoration: none;
+}
+
 @media screen and (max-width: 992px) {
   .card img {
     height: 115px;

@@ -60,6 +60,36 @@ header {
   font-size: 0.8rem;
 }
 
+.button-box-2 {
+  position: absolute;
+  top: 10px;
+  right: 150px;
+  display: flex;
+}
+
+.button-box-2 > a {
+  font-size: 16px;
+  color: #666666;
+  align-items: center;
+  display: flex;
+  border: 1px solid #4592af;
+  border-radius: 5px;
+  color: #4592af;
+  padding: 5px 10px;
+  margin-left: 15px;
+}
+
+.button-box-2 > form > button {
+  border: 1px solid red;
+  border-radius: 5px;
+  align-items: center;
+  display: flex;
+  color: red;
+  font-size: 16px;
+  margin-left: 25px;
+  padding: 5px 10px;
+}
+
 .restaurant-show-title {
   position: relative;
   top: -100px;

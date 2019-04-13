@@ -1,12 +1,15 @@
+<div class="add">
+  <a href="/restaurant/new">新增餐廳</a>
+</div>
 <!-- search bar -->
 <div class="container search-bar">
   <div class="search-bar-outer">
     <div class="search-bar-inner">
       <form action="/search">
-        <h4 class="mb-2">尋找餐廳：<a href="/restaurant/new">新增餐廳</a></h4>
+        <h4 class="mb-2">尋找餐廳：</h4>
         <div class="input-group">
           <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
-            value="" aria-describedby="search-button">
+            value="{{{keyword}}}" aria-describedby="search-button">
           <div class="input-group-append">
             <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
           </div>
@@ -37,11 +40,13 @@
                 <i class="fas fa-star fa-xs"></i>
               </span>
             </div>
-            <a href="/restaurants/{{{this._id}}}">詳細資訊</a>
-            <a href="/restaurants/{{{this._id}}}/edit">修改</a>
-            <form action="/restaurants/{{{this.id}}}/delete" method="POST" style="display: inline;">
-              <button type="submit">刪除</button>
-            </form>
+            <div class="button-box">
+              <a href="/restaurants/{{{this._id}}}">詳細資訊</a>
+              <a href="/restaurants/{{{this._id}}}/edit">修改</a>
+              <form action="/restaurants/{{{this.id}}}/delete" method="POST" style="display: inline;">
+                <button type="submit" class="btn btn-sm btn-dark">刪除</button>
+              </form>
+            </div>
           </div>
         </a>
         {{/each}}

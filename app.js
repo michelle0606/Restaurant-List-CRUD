@@ -3,7 +3,6 @@ const express = require("express");
 const app = express();
 const port = 3000;
 const exphbs = require("express-handlebars");
-const restaurantList = require("./models/seeds/restaurant.json");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
@@ -46,14 +45,20 @@ app.get("/restaurants/:id", (req, res) => {
   });
 });
 
-//搜尋餐廳  //要處理這個部分的詳細資料無法正常顯示
+//搜尋餐廳
 app.get("/search", (req, res) => {
-  const keyword = req.query.keyword;
-  const restaurants = restaurantList.results.filter(store => {
-    return store.name.includes(keyword) || store.category.includes(keyword);
-  });
+  Restaurant.find((err, restaurants) => {
+    const keyword = req.query.keyword;
+    if (err) return console.error(err);
+    const restaurant = restaurants.filter(store => {
+      return store.name.includes(keyword) || store.category.includes(keyword);
+    });
 
-  res.render("index", { restaurants: restaurants, keyword: keyword });
+    return res.render("index", {
+      restaurants: restaurant[0],
+      keyword: keyword
+    });
+  });
 });
 
 //新增餐廳的頁面
@@ -92,7 +97,6 @@ app.get("/restaurants/:id/edit", (req, res) => {
 //將編輯好的內容儲存
 app.post("/restaurants/:id", (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
-    console.log(req.params.id);
     if (err) return console.error(err);
     restaurant.name = req.body.name;
     restaurant.name_en = req.body.name_en;

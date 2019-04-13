@@ -12,7 +12,6 @@ db.on("error", () => {
 db.once("open", () => {
   const restaurantList = require("./restaurant.json");
   const results = restaurantList.results;
-  // console.log(results);
 
   for (let i in results) {
     Restaurant.create({
