@@ -1,4 +1,4 @@
-header {
+/* header {
   overflow: hidden;
 }
 
@@ -14,7 +14,7 @@ header {
   position: relative;
   z-index: -1;
   margin: -5px;
-  height: 360px;
+  height: 300px;
   background: #dddddd center center
     url("https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5720/restaurants-list-cover.jpg");
   background-size: cover;
@@ -41,7 +41,7 @@ header {
   margin-left: 400px;
   color: #4592af;
   cursor: pointer;
-}
+} */
 
 .form-control::placeholder {
   color: #aaaaaa;

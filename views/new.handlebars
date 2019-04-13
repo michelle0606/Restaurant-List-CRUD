@@ -1,48 +1,59 @@
-<div class="container-form">
-  <form action="/restaurants" method="POST" style="width:60%; margin-left:40px ;margin-top:-300px;">
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <div class="col">
-          <input type="text" class="form-control" placeholder="商家名稱（中文）" name="name" required>
-        </div>
-      </div>
-      <div class="form-group col-md-6">
-        <div class="col">
-          <input type="text" class="form-control" placeholder="商家名稱（英文）" name="name_en" required>
-        </div>
+<div class="container-form"></div>
+<form action="/restaurants" method="POST" style="width: 60%; position: absolute; top: 30%; left:20%">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <div class="col">
+        <input type="text" class="form-control" placeholder="商家名稱（中文）" name="name" required>
       </div>
     </div>
-    <div class="form-row">
-      <div class="form-group col-md-4">
-        <div class="col">
-          <input type="text" class="form-control" placeholder="類別" name="category" required>
-        </div>
-      </div>
-      <div class="form-group col-md-4">
-        <div class="col">
-          <input type="text" class="form-control" placeholder="電話" name="phone" required>
-        </div>
-      </div>
-      <div class="form-group col-md-4">
-        <div class="col">
-          <input type="text" class="form-control" placeholder="評價" name="rating" required>
-        </div>
+    <div class="form-group col-md-6">
+      <div class="col">
+        <input type="text" class="form-control" placeholder="商家名稱（英文）" name="name_en" required>
       </div>
     </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <div class="col">
+        <input type="text" class="form-control" placeholder="類別" name="category" required>
+      </div>
+    </div>
+    <div class="form-group col-md-4">
+      <div class="col">
+        <input type="text" class="form-control" placeholder="電話" name="phone" required>
+      </div>
+    </div>
+    <div class="form-group col-md-4">
+      <div class="col">
+        <input type="text" class="form-control" placeholder="評價" name="rating" required>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <div class="col">
         <input type="text" class="form-control" placeholder="地址" name="location" required>
       </div>
-      <div class="form-group col-md-6">
+    </div>
+    <div class="form-group col-md-6">
+      <div class="col">
         <input type="text" class="form-control" placeholder="Google Map上的網址" name="google_map">
       </div>
     </div>
-    <div class="form-group">
+  </div>
+
+  <div class="form-group">
+    <div class="col">
       <input type="text" class="form-control" placeholder="圖片" name="image" required>
     </div>
-    <div class="form-group">
+  </div>
+  <div class="form-group">
+    <div class="col">
       <input type="text" class="form-control" placeholder="描述" name="description" required>
     </div>
-    <button type="submit" class="btn btn-info btn-lg" style="position:absolute ;top: 310px; right:400px;">新增</button>
-  </form>
-</div>
+  </div>
+  <div style="text-align:right;">
+    <button type="submit" class="btn btn-info" style="padding: 15px 40px; margin-right: 15px;">新增</button>
+  </div>
+</form>

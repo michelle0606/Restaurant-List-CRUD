@@ -3,11 +3,11 @@ header {
 }
 
 .navbar .navbar-brand {
-  color: #4592af;
+  color: #4592af !important;
 }
 
 .navbar .navbar-brand:hover {
-  color: #226089;
+  color: #226089 !important;
 }
 
 .banner {
@@ -97,6 +97,17 @@ header {
   text-align: center;
   font-size: 3rem;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.container-form {
+  background: #dddddd center center
+    url("https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5720/restaurants-list-cover.jpg");
+  background-size: cover;
+  height: 380px;
+  filter: blur(3px);
+  position: relative;
+  z-index: -1;
+  margin: -5px;
 }
 
 @media screen and (max-width: 768px) {
