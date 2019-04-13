@@ -34,6 +34,13 @@ header {
 
 .search-bar .search-bar-inner h4 {
   color: #9b4b4b;
+  display: flex;
+}
+
+.search-bar .search-bar-inner h4 a {
+  margin-left: 400px;
+  color: #4592af;
+  cursor: pointer;
 }
 
 .form-control::placeholder {

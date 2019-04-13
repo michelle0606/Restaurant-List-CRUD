@@ -1,0 +1,48 @@
+<div class="container-form">
+  <form action="/restaurants" method="POST" style="width:60%; margin-left:40px ;margin-top:-300px;">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <div class="col">
+          <input type="text" class="form-control" placeholder="商家名稱（中文）" name="name" value="{{{store.name}}}">
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <div class="col">
+          <input type="text" class="form-control" placeholder="商家名稱（英文）" name="name_en" value="{{{store.name_en}}}">
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <div class="col">
+          <input type="text" class="form-control" placeholder="類別" name="category" value="{{{store.category}}}">
+        </div>
+      </div>
+      <div class="form-group col-md-4">
+        <div class="col">
+          <input type="text" class="form-control" placeholder="電話" name="phone" value="{{{store.phone}}}">
+        </div>
+      </div>
+      <div class="form-group col-md-4">
+        <div class="col">
+          <input type="text" class="form-control" placeholder="評價" name="rating" value="{{{store.rating}}}">
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <input type="text" class="form-control" placeholder="地址" name="location" value="{{{store.location}}}">
+      </div>
+      <div class="form-group col-md-6">
+        <input type="text" class="form-control" placeholder="Google Map上的網址" name="google_map" value="{{{store.google_map}}}">
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="圖片" name="image" value="{{{store.image}}}">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="描述" name="description" value="{{{store.description}}}">
+    </div>
+    <button type="submit" class="btn btn-primary" style="position:absolute ;top: 320px; right:400px;">修改</button>
+  </form>
+</div>
