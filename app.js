@@ -112,7 +112,15 @@ app.post("/restaurants/:id", (req, res) => {
 });
 
 //刪除餐廳
-app.post("/restaurants/:id/delete", (req, res) => {});
+app.post("/restaurants/:id/delete", (req, res) => {
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.error(err);
+    restaurant.remove(err => {
+      if (err) return console.error(err);
+      return res.redirect("/");
+    });
+  });
+});
 
 app.listen(port, () => {
   console.log(`Express is running on http://localhost:${port}`);

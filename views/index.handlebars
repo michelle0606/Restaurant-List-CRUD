@@ -39,7 +39,9 @@
             </div>
             <a href="/restaurants/{{{this._id}}}">詳細資訊</a>
             <a href="/restaurants/{{{this._id}}}/edit">修改</a>
-            <button type="submit">刪除</button>
+            <form action="/restaurants/{{{this.id}}}/delete" method="POST" style="display: inline;">
+              <button type="submit">刪除</button>
+            </form>
           </div>
         </a>
         {{/each}}
