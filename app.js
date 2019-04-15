@@ -33,7 +33,7 @@ const Restaurant = require("./models/restaurant");
 app.get("/", (req, res) => {
   Restaurant.find((err, restaurants) => {
     if (err) return console.error(err);
-    return res.render("index", { restaurants: restaurants });
+    return res.render("index", { restaurants });
   });
 });
 
@@ -68,17 +68,7 @@ app.get("/restaurant/new", (req, res) => {
 
 //把新增的餐廳加到資料庫
 app.post("/restaurants", (req, res) => {
-  const restaurant = Restaurant({
-    name: req.body.name,
-    name_en: req.body.name_en,
-    category: req.body.category,
-    image: req.body.image,
-    location: req.body.location,
-    phone: req.body.phone,
-    google_map: req.body.google_map,
-    rating: req.body.rating,
-    description: req.body.description
-  });
+  const restaurant = Restaurant(req.body);
 
   restaurant.save(err => {
     if (err) return console.error(err);
@@ -98,17 +88,10 @@ app.get("/restaurants/:id/edit", (req, res) => {
 app.post("/restaurants/:id", (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err);
-    restaurant.name = req.body.name;
-    restaurant.name_en = req.body.name_en;
-    restaurant.category = req.body.category;
-    restaurant.image = req.body.image;
-    restaurant.location = req.body.location;
-    restaurant.phone = req.body.phone;
-    restaurant.google_map = req.body.google_map;
-    restaurant.rating = req.body.rating;
-    restaurant.description = req.body.description;
+    Object.assign(restaurant, req.body); //Object.assign(目標物件, 來源物件)
 
     restaurant.save(err => {
+      // doc.save(callback); //回傳值：合併目標物件及(多個)來源物件所得到的最終物件。
       if (err) return console.error(err);
       return res.redirect(`/restaurants/${req.params.id}`);
     });

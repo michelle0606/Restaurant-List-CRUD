@@ -60,6 +60,38 @@ header {
   font-size: 0.8rem;
 }
 
+/**new page**/
+.btn-info {
+  padding: 15px 40px;
+  margin-right: 15px;
+}
+
+.new-form {
+  width: 60%;
+  position: absolute;
+  top: 30%;
+  left: 20%;
+}
+
+/**edit page**/
+
+.edit {
+  width: 60%;
+  position: absolute;
+  top: 30%;
+  left: 20%;
+}
+
+.edit-button {
+  text-align: right;
+}
+
+.edit-button button {
+  padding: 15px 40px;
+  margin-right: 15px;
+}
+
+/**button group**/
 .button-box-2 {
   position: absolute;
   top: 10px;
