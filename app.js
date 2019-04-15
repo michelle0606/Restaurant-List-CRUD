@@ -91,7 +91,7 @@ app.post("/restaurants/:id", (req, res) => {
     Object.assign(restaurant, req.body); //Object.assign(目標物件, 來源物件)
 
     restaurant.save(err => {
-      // doc.save(callback); //回傳值：合併目標物件及(多個)來源物件所得到的最終物件。
+      // doc.save(callback); 回傳值：合併目標物件及(多個)來源物件所得到的最終物件。
       if (err) return console.error(err);
       return res.redirect(`/restaurants/${req.params.id}`);
     });
