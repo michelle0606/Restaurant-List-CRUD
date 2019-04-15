@@ -5,6 +5,7 @@ const port = 3000;
 const exphbs = require("express-handlebars");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const methodOverride = require("method-override");
 
 mongoose.connect("mongodb://localhost/restaurant", { useNewUrlParser: true });
 const db = mongoose.connection;
@@ -23,7 +24,9 @@ app.set("view engine", "handlebars"); //告訴 Express 說要設定的 view engi
 
 // setting static files
 app.use(express.static("public")); // 告訴 Express 靜態檔案的資料夾位置
+
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
 
 const Restaurant = require("./models/restaurant");
 
@@ -55,7 +58,7 @@ app.get("/search", (req, res) => {
     });
 
     return res.render("index", {
-      restaurants: restaurant[0],
+      restaurants: restaurant,
       keyword: keyword
     });
   });
@@ -85,7 +88,7 @@ app.get("/restaurants/:id/edit", (req, res) => {
 });
 
 //將編輯好的內容儲存
-app.post("/restaurants/:id", (req, res) => {
+app.put("/restaurants/:id", (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err);
     Object.assign(restaurant, req.body); //Object.assign(目標物件, 來源物件)
@@ -99,7 +102,7 @@ app.post("/restaurants/:id", (req, res) => {
 });
 
 //刪除餐廳
-app.post("/restaurants/:id/delete", (req, res) => {
+app.delete("/restaurants/:id/delete", (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err);
     restaurant.remove(err => {

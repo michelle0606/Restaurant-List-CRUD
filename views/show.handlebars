@@ -1,7 +1,7 @@
 <div class="button-box-2">
-  <a href="/restaurants/{{{store._id}}}/edit">修改</a>
+  <a href="/restaurants/{{{store._id}}}/edit?_method=PUT">修改</a>
   <a href="/">返回</a>
-  <form action="/restaurants/{{{store._id}}}/delete" method="POST" style="display: inline;">
+  <form action="/restaurants/{{{store._id}}}/delete?_method=DELETE" method="POST" style="display: inline;">
     <button type="submit" class="btn btn-sm">刪除</button>
   </form>
 </div>
