@@ -6,7 +6,7 @@
   <div class="search-bar-outer">
     <div class="search-bar-inner row">
       <form action="/search" class="col-6">
-        <div class="input-group">
+        <div class="input-group animation">
           <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
             value="{{{keyword}}}" aria-describedby="search-button">
           <div class="input-group-append">
@@ -36,7 +36,7 @@
       <div class="card-columns">
         {{#each restaurants}}
         <a href="/restaurants/{{this._id}}" class="text-secondary">
-          <div class="card mb-3">
+          <div class="card mb-3 animation">
             <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
             <div class="card-body p-3">
               <h6 class="card-title mb-1">{{this.name}}</h6>
@@ -54,7 +54,7 @@
               <a href="/restaurants/{{{this._id}}}">詳細資訊</a>
               <a href="/restaurants/{{{this._id}}}/edit">修改</a>
               <form action="/restaurants/{{{this.id}}}/delete?_method=DELETE" method="POST" style="display: inline;">
-                <button type="submit" class="btn btn-sm btn-dark" data-toggle="modal" data-target="
+                <button id="delete_button" type="submit" class="btn btn-sm btn-dark" data-toggle="modal" data-target="
                       #trigger-deleteItem-{{this._id}}">刪除</button>
               </form>
             </div>

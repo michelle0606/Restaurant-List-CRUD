@@ -2,6 +2,13 @@
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
+.animation:hover {
+  z-index: 1;
+  transform: scale(1.05);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
 .card img {
   height: 180px;
 }
