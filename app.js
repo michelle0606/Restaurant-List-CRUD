@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 
+mongoose.set("debug", true);
 mongoose.connect("mongodb://localhost/restaurant", { useNewUrlParser: true });
 const db = mongoose.connection;
 
@@ -30,23 +31,9 @@ app.use(methodOverride("_method"));
 
 const Restaurant = require("./models/restaurant");
 
-// routes setting
-
-//瀏覽所有餐廳
-app.get("/", (req, res) => {
-  Restaurant.find((err, restaurants) => {
-    if (err) return console.error(err);
-    return res.render("index", { restaurants });
-  });
-});
-
-//瀏覽其中一個餐廳的詳細資料
-app.get("/restaurants/:id", (req, res) => {
-  Restaurant.findById(req.params.id, (err, store) => {
-    if (err) return console.error(err);
-    return res.render("show", { store: store });
-  });
-});
+app.use("/sort", require("./routes/sort"));
+app.use("/restaurants", require("./routes/restaurant"));
+app.use("/", require("./routes/home"));
 
 //搜尋餐廳
 app.get("/search", (req, res) => {
@@ -60,54 +47,6 @@ app.get("/search", (req, res) => {
     return res.render("index", {
       restaurants: restaurant,
       keyword: keyword
-    });
-  });
-});
-
-//新增餐廳的頁面
-app.get("/restaurant/new", (req, res) => {
-  res.render("new");
-});
-
-//把新增的餐廳加到資料庫
-app.post("/restaurants", (req, res) => {
-  const restaurant = Restaurant(req.body);
-
-  restaurant.save(err => {
-    if (err) return console.error(err);
-    return res.redirect("/");
-  });
-});
-
-//編輯餐廳的頁面
-app.get("/restaurants/:id/edit", (req, res) => {
-  Restaurant.findById(req.params.id, (err, store) => {
-    if (err) return console.error(err);
-    return res.render("edit", { store: store });
-  });
-});
-
-//將編輯好的內容儲存
-app.put("/restaurants/:id", (req, res) => {
-  Restaurant.findById(req.params.id, (err, restaurant) => {
-    if (err) return console.error(err);
-    Object.assign(restaurant, req.body); //Object.assign(目標物件, 來源物件)
-
-    restaurant.save(err => {
-      // doc.save(callback); 回傳值：合併目標物件及(多個)來源物件所得到的最終物件。
-      if (err) return console.error(err);
-      return res.redirect(`/restaurants/${req.params.id}`);
-    });
-  });
-});
-
-//刪除餐廳
-app.delete("/restaurants/:id/delete", (req, res) => {
-  Restaurant.findById(req.params.id, (err, restaurant) => {
-    if (err) return console.error(err);
-    restaurant.remove(err => {
-      if (err) return console.error(err);
-      return res.redirect("/");
     });
   });
 });

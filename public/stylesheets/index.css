@@ -65,7 +65,7 @@
   text-decoration: none;
 }
 
-.search-bar-inner > .dropdown {
+.dropdown {
   display: flex;
   justify-content: flex-end;
 }

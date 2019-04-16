@@ -1,5 +1,5 @@
 <div class="add">
-  <a href="/restaurant/new">新增餐廳</a>
+  <a href="/restaurants/new">新增餐廳</a>
 </div>
 <!-- search bar -->
 <div class="container search-bar">
@@ -15,13 +15,15 @@
         </div>
       </form>
       <div class="col-6">
-        <select name="sort" id="sort">
-          <option selected="selected" disabled="disabled" style='display: none' value=''>餐廳排序</option>
-          <option value="http://localhost:3000/restaurants/5cb1afda584234823c9236b4">A->Z</option>
-          <option value="/restaurants/5cb1afda584234823c9236b4">Z->A</option>
-          <option value="/restaurants/5cb1afda584234823c9236b4">類別</option>
-          <option value="/restaurants/5cb1afda584234823c9236b4">地區</option>
-        </select>
+        <div class="dropdown">
+          <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">排序方式</button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="/sort/rating">餐廳評分</a>
+            <a class="dropdown-item" href="/sort/asc">A -> Z</a>
+            <a class="dropdown-item" href="/sort/desc">Z -> A</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -52,7 +54,8 @@
               <a href="/restaurants/{{{this._id}}}">詳細資訊</a>
               <a href="/restaurants/{{{this._id}}}/edit">修改</a>
               <form action="/restaurants/{{{this.id}}}/delete?_method=DELETE" method="POST" style="display: inline;">
-                <button type="submit" class="btn btn-sm btn-dark">刪除</button>
+                <button type="submit" class="btn btn-sm btn-dark" data-toggle="modal" data-target="
+                      #trigger-deleteItem-{{this._id}}">刪除</button>
               </form>
             </div>
           </div>
