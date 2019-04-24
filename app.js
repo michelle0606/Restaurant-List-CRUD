@@ -7,7 +7,6 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 
-mongoose.set("debug", true);
 mongoose.connect("mongodb://localhost/restaurant", { useNewUrlParser: true });
 const db = mongoose.connection;
 
@@ -29,27 +28,11 @@ app.use(express.static("public")); // 告訴 Express 靜態檔案的資料夾位
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
-const Restaurant = require("./models/restaurant");
-
 app.use("/sort", require("./routes/sort"));
 app.use("/restaurants", require("./routes/restaurant"));
 app.use("/", require("./routes/home"));
-
-//搜尋餐廳
-app.get("/search", (req, res) => {
-  Restaurant.find((err, restaurants) => {
-    const keyword = req.query.keyword;
-    if (err) return console.error(err);
-    const restaurant = restaurants.filter(store => {
-      return store.name.includes(keyword) || store.category.includes(keyword);
-    });
-
-    return res.render("index", {
-      restaurants: restaurant,
-      keyword: keyword
-    });
-  });
-});
+app.use("/search", require("./routes/search"));
+app.use("/users", require("./routes/user"));
 
 app.listen(port, () => {
   console.log(`Express is running on http://localhost:${port}`);

@@ -2,17 +2,17 @@ const express = require("express");
 const router = express.Router();
 const Restaurant = require("../models/restaurant");
 
+//新增餐廳的頁面
+router.get("/new", (req, res) => {
+  res.render("new");
+});
+
 //瀏覽其中一個餐廳的詳細資料
 router.get("/:id", (req, res) => {
   Restaurant.findById(req.params.id, (err, store) => {
     if (err) return console.error(err);
     return res.render("show", { store: store });
   });
-});
-
-//新增餐廳的頁面
-router.get("/new", (req, res) => {
-  res.render("new");
 });
 
 //把新增的餐廳加到資料庫

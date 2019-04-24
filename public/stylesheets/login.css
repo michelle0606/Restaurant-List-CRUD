@@ -1,0 +1,86 @@
+.black-cover {
+  background-image: url("https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5720/restaurants-list-cover.jpg");
+  background-color: #000000;
+  background-size: cover;
+  z-index: 100;
+  position: absolute;
+  height: 100%;
+  max-width: 100%;
+  width: 100%;
+  top: 0%;
+  filter: blur(3px);
+}
+
+.login-box {
+  background-color: #fff;
+  position: absolute;
+  z-index: 100;
+  padding: 15px 30px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.vertical-align {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  color: #4592af;
+}
+
+.title > img,
+.title > span {
+  margin: 5px;
+}
+
+.local-login {
+  background-color: #f9c767;
+  color: #fff;
+}
+
+.local-login:hover {
+  color: #fff;
+  background-color: rgb(216, 159, 52);
+}
+
+.login-box > form {
+  margin: 10px;
+}
+
+.login-box > form > .form-group > input {
+  background-color: #f1f1f1;
+}
+
+.google-login {
+  background-color: #db4975;
+  color: #fff;
+}
+
+.google-login:hover {
+  color: #fff;
+  background-color: rgb(187, 30, 77);
+}
+
+.or {
+  font-size: 0.8rem;
+  color: #888;
+  border-bottom: 1px solid #f2f2f2;
+  line-height: 0;
+  padding: 0;
+  margin: 1.5em 0;
+}
+
+.or > span {
+  padding: 0 1em;
+  background-color: white;
+}
+
+.login-box > .mt-4 {
+  font-size: 14px;
+}
