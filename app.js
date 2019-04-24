@@ -11,7 +11,9 @@ const passport = require("passport");
 
 app.use(
   session({
-    secret: "dkej49032jui4hf73iuh48329hu3jhrjkd" // secret: 定義一組自己的私鑰（字串)
+    secret: "dkej49032jui4hf73iuh48329hu3jhrjkd",
+    resave: "false",
+    saveUninitialized: "false" // secret: 定義一組自己的私鑰（字串)
   })
 );
 
@@ -27,7 +29,10 @@ app.use((req, res, next) => {
   next();
 });
 
-mongoose.connect("mongodb://localhost/restaurant", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost/restaurant", {
+  useNewUrlParser: true,
+  useCreateIndex: true
+});
 const db = mongoose.connection;
 
 db.on("error", () => {
