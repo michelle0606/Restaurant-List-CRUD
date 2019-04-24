@@ -1,0 +1,31 @@
+.search_box {
+  position: absolute;
+}
+
+.search_box > form {
+  display: flex;
+  align-items: center;
+}
+
+.search_box > form > input {
+  border-radius: 20px;
+  border: none;
+}
+
+.search-button {
+  margin-left: 10px !important;
+}
+
+.search_box > form > button {
+  padding: 5px;
+  margin: 0px 5px;
+  border-radius: 50%;
+  border: none;
+  width: 50px;
+  height: 35px;
+  cursor: pointer;
+}
+
+.search_box > form > button:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}

@@ -1,3 +1,37 @@
+.icon {
+  display: flex;
+  align-items: center;
+}
+
+.icon > span,
+.icon > span > a {
+  color: #4592af;
+  font-size: 20px;
+}
+
+.icon > span {
+  padding: 5px;
+  margin: 0px 15px;
+  cursor: pointer;
+}
+
+.sort {
+  cursor: pointer !important;
+}
+
+.dropdown > button {
+  color: #4592af;
+  border: none;
+  background: rgba(0, 0, 0, 0);
+  width: 30px;
+  height: 30px;
+  font-size: 28px;
+}
+
+.dropdown {
+  display: inline !important;
+}
+
 .card {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }

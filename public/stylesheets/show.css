@@ -1,6 +1,16 @@
 header {
   overflow: hidden;
 }
+.navbar {
+  height: 70px;
+}
+
+.trash {
+  color: red;
+  font-size: 20px;
+  border: none;
+  background-color: #f8f9fa;
+}
 
 .navbar .navbar-brand {
   color: #4592af !important;
@@ -131,14 +141,13 @@ header {
 }
 
 .container-form {
-  background: #dddddd center center
-    url("https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5720/restaurants-list-cover.jpg");
+  background-image: url("https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5720/restaurants-list-cover.jpg");
   background-size: cover;
-  height: 380px;
+  height: 100%;
+  max-width: 100%;
+  width: 100%;
   filter: blur(3px);
-  position: relative;
-  z-index: -1;
-  margin: -5px;
+  position: absolute;
 }
 
 @media screen and (max-width: 768px) {

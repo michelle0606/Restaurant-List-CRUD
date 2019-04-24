@@ -1,34 +1,33 @@
-<div class="add">
-  <a href="/restaurants/new">新增餐廳</a>
-</div>
-<!-- search bar -->
-<div class="container search-bar">
-  <div class="search-bar-outer">
-    <div class="search-bar-inner row">
-      <form action="/search" class="col-6">
-        <div class="input-group animation">
-          <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
-            value="{{{keyword}}}" aria-describedby="search-button">
-          <div class="input-group-append">
-            <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+<header>
+  <!-- navigation -->
+  <nav class="navbar navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <img src="https://i.postimg.cc/JG2gFgJg/logo.png" width="30" height="30" class="d-inline-block align-top" alt="我的餐廳清單">
+        我的餐廳清單
+      </a>
+      <div class="icon">
+        <div class="search_icon_box"></div>
+        <span id="sort_icon" class="target-icon">
+          <div class="dropdown">
+            <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false"></button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="/sort/rating">餐廳評分</a>
+              <a class="dropdown-item" href="/sort/asc">A -> Z</a>
+              <a class="dropdown-item" href="/sort/desc">Z -> A</a>
+            </div>
           </div>
-        </div>
-      </form>
-      <div class="col-6">
-        <div class="dropdown">
-          <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">排序方式</button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="/sort/rating">餐廳評分</a>
-            <a class="dropdown-item" href="/sort/asc">A -> Z</a>
-            <a class="dropdown-item" href="/sort/desc">Z -> A</a>
-          </div>
-        </div>
+        </span>
+        <span id="search_icon" class="target-icon"><i class="fas fa-search"></i></span>
+        <span id="new_icon" class="target-icon"><a href="/restaurants/new"><i class="fas fa-folder-plus"></i></a></span>
+        <span id="logout_icon" class="target-icon"><a href="/users/logout"><i class="fas fa-power-off"></i></a></span>
       </div>
     </div>
-  </div>
-</div>
+  </nav>
 
+  <div class="banner"></div>
+</header>
 <!-- restaurant list -->
 <div class="container mt-5">
   <div class="row">
