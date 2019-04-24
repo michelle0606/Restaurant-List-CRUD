@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const Restaurant = require("../models/restaurant");
+const { authenticated } = require("../config/auth");
 
-router.get("/rating", (req, res) => {
+router.get("/rating", authenticated, (req, res) => {
   Restaurant.find({})
     .sort({
       rating: "-1"
@@ -13,7 +14,7 @@ router.get("/rating", (req, res) => {
     });
 });
 
-router.get("/asc", (req, res) => {
+router.get("/asc", authenticated, (req, res) => {
   Restaurant.find({})
     .sort({
       name: "1"
@@ -24,7 +25,7 @@ router.get("/asc", (req, res) => {
     });
 });
 
-router.get("/desc", (req, res) => {
+router.get("/desc", authenticated, (req, res) => {
   Restaurant.find({})
     .sort({
       name: "-1"
