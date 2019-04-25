@@ -12,4 +12,13 @@ router.get(
     failureRedirect: "/users/login"
   })
 );
+router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
+
+router.get(
+  "/google/callback",
+  passport.authenticate("google", { failureRedirect: "/login" }),
+  function(req, res) {
+    res.redirect("/");
+  }
+);
 module.exports = router;
