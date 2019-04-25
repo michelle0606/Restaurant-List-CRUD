@@ -58,6 +58,7 @@ app.use("/restaurants", require("./routes/restaurant"));
 app.use("/", require("./routes/home"));
 app.use("/search", require("./routes/search"));
 app.use("/users", require("./routes/user"));
+app.use("/auth", require("./routes/auth"));
 
 app.listen(port, () => {
   console.log(`Express is running on http://localhost:${port}`);

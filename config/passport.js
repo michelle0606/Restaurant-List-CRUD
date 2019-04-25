@@ -30,6 +30,46 @@ module.exports = passport => {
       });
     })
   );
+  passport.use(
+    new FacebookStrategy(
+      {
+        clientID: "2455992964412406",
+        clientSecret: "024e45bfa1a78f68de6c19e6adca8ff9",
+        callbackURL: "http://localhost:3000/auth/facebook/callback",
+        profileFields: ["email", "displayName"]
+      },
+      (accessToken, refreshToken, profile, done) => {
+        User.findOne({
+          email: profile._json.email
+        }).then(user => {
+          if (!user) {
+            var randomPassword = Math.random()
+              .toString(36)
+              .slice(-8);
+            bcrypt.genSalt(10, (err, salt) =>
+              bcrypt.hash(randomPassword, salt, (err, hash) => {
+                var newUser = User({
+                  name: profile._json.name,
+                  email: profile._json.email,
+                  password: hash
+                });
+                newUser
+                  .save()
+                  .then(user => {
+                    return done(null, user);
+                  })
+                  .catch(err => {
+                    console.log(err);
+                  });
+              })
+            );
+          } else {
+            return done(null, user);
+          }
+        });
+      }
+    )
+  );
   passport.serializeUser((user, done) => {
     done(null, user.id);
   });
