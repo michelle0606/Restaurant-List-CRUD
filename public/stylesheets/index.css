@@ -115,6 +115,17 @@
   width: 200px;
 }
 
+.suggest {
+  border-radius: 50px;
+  background-color: #f3a20c;
+  color: #fff;
+  padding: 10px;
+  font-size: 20px;
+  text-align: center;
+  width: 450px;
+  margin: auto;
+}
+
 @media screen and (max-width: 992px) {
   .card img {
     height: 115px;

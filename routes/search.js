@@ -6,7 +6,8 @@ const { authenticated } = require("../config/auth");
 //搜尋餐廳
 router.get("/", authenticated, (req, res) => {
   const keyword = RegExp(`${req.query.keyword}`, "i");
-  Restaurant.find(
+  Restaurant.findById(
+    { _id: req.params.id, userId: req.user._id },
     {
       $or: [{ name: keyword }, { category: keyword }]
     },

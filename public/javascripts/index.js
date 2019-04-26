@@ -29,3 +29,14 @@ searchIcon.addEventListener("click", () => {
     iconBox.innerHTML = ``;
   });
 });
+
+const cardContent = document.querySelector(".card-columns");
+
+if (cardContent.innerText === "") {
+  cardContent.classList.remove("card-columns");
+  cardContent.innerHTML = `
+    <div class="suggest">
+      <span>按下右上方的 &nbsp <i class="fas fa-folder-plus"></i> &nbsp 來新增一家餐廳吧！</span>
+    </div>
+    `;
+}

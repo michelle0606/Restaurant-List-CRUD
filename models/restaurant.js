@@ -47,4 +47,3 @@ const restaurantSchema = new Schema({
 });
 
 module.exports = mongoose.model("Restaurant", restaurantSchema);
-// module.exports = mongoose.model("Restaurant", restaurantSchema); 第一個參數是collection的名字，系統會自動轉換為複數小寫；第二個參數是設定好的Schema；另外還可以再傳第三個參數，代表要對應的 collection，如果沒有給的話就會自動用第一個參數 ( model 名稱)。

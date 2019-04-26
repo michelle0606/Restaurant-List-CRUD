@@ -8,26 +8,30 @@ const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 const session = require("express-session");
 const passport = require("passport");
+const flash = require("connect-flash");
 
 app.use(
   session({
     secret: "dkej49032jui4hf73iuh48329hu3jhrjkd",
     resave: "false",
-    saveUninitialized: "false" // secret: 定義一組自己的私鑰（字串)
+    saveUninitialized: "false"
   })
 );
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
+
+app.use((req, res, next) => {
+  res.locals.user = req.user;
+  res.locals.isAuthenticated = req.isAuthenticated();
+  res.locals.success_msg = req.flash("success_msg");
+  res.locals.warning_msg = req.flash("warning_msg");
+  next();
+});
 
 // 載入 Passport config
 require("./config/passport")(passport);
-
-// 登入後可以取得使用者的資訊方便我們在 view 裡面直接使用
-app.use((req, res, next) => {
-  res.locals.user = req.user;
-  next();
-});
 
 mongoose.connect("mongodb://localhost/restaurant", {
   useNewUrlParser: true,

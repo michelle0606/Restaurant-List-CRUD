@@ -12,7 +12,10 @@ router.get(
     failureRedirect: "/users/login"
   })
 );
-router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
+router.get(
+  "/google",
+  passport.authenticate("google", { scope: ["email", "profile"] })
+);
 
 router.get(
   "/google/callback",

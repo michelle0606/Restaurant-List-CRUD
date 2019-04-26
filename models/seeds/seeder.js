@@ -1,5 +1,9 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
 const Restaurant = require("../restaurant");
+const User = require("../user");
+const restaurantList = require("./restaurant.json").results;
+const userList = require("./user.json").results;
 
 mongoose.connect("mongodb://localhost/restaurant", { useNewUrlParser: true });
 
@@ -10,22 +14,20 @@ db.on("error", () => {
 });
 
 db.once("open", () => {
-  const restaurantList = require("./restaurant.json");
-  const results = restaurantList.results;
-
-  for (let i in results) {
-    Restaurant.create({
-      name: `${results[i].name}`,
-      name_en: `${results[i].name_en}`,
-      category: `${results[i].category}`,
-      image: `${results[i].image}`,
-      location: `${results[i].location}`,
-      phone: `${results[i].phone}`,
-      google_map: `${results[i].google_map}`,
-      rating: `${results[i].rating}`,
-      description: `${results[i].description}`
+  console.log("db connected!");
+  for (let i = 0, count = 0; i < userList.length; i++) {
+    const user = User(userList[i]);
+    bcrypt.genSalt(10, (err, salt) => {
+      bcrypt.hash(user.password, salt, (err, hash) => {
+        user.password = hash;
+        user.save();
+      });
     });
-  }
 
+    for (let j = i * 3; j < (i + 1) * 3; j++, count++) {
+      Restaurant.create({ ...restaurantList[j], userId: user._id });
+      if (count === restaurantList.length) return;
+    }
+  }
   console.log("done!");
 });

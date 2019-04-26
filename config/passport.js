@@ -80,8 +80,9 @@ module.exports = passport => {
         profileFields: ["email", "displayName"]
       },
       (accessToken, refreshToken, profile, done) => {
+        console.log(profile);
         User.findOne({
-          email: profile.id
+          email: profile.emails[0].value
         }).then(user => {
           if (!user) {
             var randomPassword = Math.random()
@@ -91,7 +92,7 @@ module.exports = passport => {
               bcrypt.hash(randomPassword, salt, (err, hash) => {
                 var newUser = User({
                   name: profile._json.name,
-                  email: profile.id,
+                  email: profile.emails[0].value,
                   password: hash
                 });
                 newUser
