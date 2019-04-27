@@ -20,6 +20,14 @@
           </div>
         </span>
         <span id="search_icon" class="target-icon"><i class="fas fa-search"></i></span>
+        <div class="search_box">
+          <form action="/restaurants/search">
+            <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
+              value="{{key}}" aria-describedby="search-button">
+            <button class="search-button" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+            <button class="close-button" type="button" id="close-button"><i class="fas fa-times"></i></button>
+          </form>
+        </div>
         <span id="new_icon" class="target-icon">
           <a href="/restaurants/new">
             <i class="fas fa-folder-plus"></i>

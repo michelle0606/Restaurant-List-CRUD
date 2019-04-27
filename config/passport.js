@@ -33,9 +33,9 @@ module.exports = passport => {
   passport.use(
     new FacebookStrategy(
       {
-        clientID: "2455992964412406",
-        clientSecret: "024e45bfa1a78f68de6c19e6adca8ff9",
-        callbackURL: "http://localhost:3000/auth/facebook/callback",
+        clientID: process.env.FACEBOOK_ID,
+        clientSecret: process.env.FACEBOOK_SECRET,
+        callbackURL: process.env.FACEBOOK_CALLBACK,
         profileFields: ["email", "displayName"]
       },
       (accessToken, refreshToken, profile, done) => {
@@ -73,14 +73,12 @@ module.exports = passport => {
   passport.use(
     new GoogleStrategy(
       {
-        clientID:
-          "1020769602169-1v5vj9i2a77ck0mna7ih5q9g7epd4coj.apps.googleusercontent.com",
-        clientSecret: "lh8ddCE2pOOlUOWKlGe22crL",
-        callbackURL: "http://localhost:3000/auth/google/callback",
+        clientID: process.env.GOOGLE_ID,
+        clientSecret: process.env.GOOGLE_SECRET,
+        callbackURL: process.env.GOOGLE_CALLBACK,
         profileFields: ["email", "displayName"]
       },
       (accessToken, refreshToken, profile, done) => {
-        console.log(profile);
         User.findOne({
           email: profile.emails[0].value
         }).then(user => {

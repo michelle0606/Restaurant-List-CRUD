@@ -1,18 +1,23 @@
 .search_box {
   position: absolute;
+  top: 16px;
+  background-color: #f8f9fa;
+  z-index: -1;
+}
+
+.index_order {
+  z-index: 1;
   animation-name: move;
   animation-duration: 1s;
   animation-fill-mode: forwards;
-  top: 16px;
-  z-index: 1;
-  background-color: #f8f9fa;
 }
+
 @keyframes move {
   from {
     right: 0;
   }
   to {
-    right: 120px;
+    right: 100px;
   }
 }
 

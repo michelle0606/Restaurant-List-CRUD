@@ -10,6 +10,11 @@ const session = require("express-session");
 const passport = require("passport");
 const flash = require("connect-flash");
 
+if (process.env.NODE_ENV !== "production") {
+  // 如果不是 production 模式
+  require("dotenv").config(); // 使用 dotenv 讀取 .env 檔案
+}
+
 app.use(
   session({
     secret: "dkej49032jui4hf73iuh48329hu3jhrjkd",
@@ -60,7 +65,6 @@ app.use(methodOverride("_method"));
 app.use("/sort", require("./routes/sort"));
 app.use("/restaurants", require("./routes/restaurant"));
 app.use("/", require("./routes/home"));
-app.use("/search", require("./routes/search"));
 app.use("/users", require("./routes/user"));
 app.use("/auth", require("./routes/auth"));
 

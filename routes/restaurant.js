@@ -1,11 +1,29 @@
 const express = require("express");
 const router = express.Router();
 const Restaurant = require("../models/restaurant");
+const User = require("../models/user");
 const { authenticated } = require("../config/auth");
 
 //新增餐廳的頁面
 router.get("/new", authenticated, (req, res) => {
   res.render("new");
+});
+
+//搜尋與排序餐廳
+router.get("/search", authenticated, (req, res) => {
+  const key = req.query.keyword;
+  const keyword = RegExp(`${req.query.keyword}`, "i");
+  Restaurant.find(
+    { $or: [{ name: keyword }, { category: keyword }] },
+    (err, restaurants) => {
+      if (err) return console.error(err);
+      if (`${restaurants[0].userId}` === `${req.user._id}`) {
+        return res.render("index", { restaurants, key });
+      } else {
+        return res.render("index", { key });
+      }
+    }
+  );
 });
 
 //瀏覽其中一個餐廳的詳細資料
@@ -21,27 +39,16 @@ router.get("/:id", authenticated, (req, res) => {
 
 //把新增的餐廳加到資料庫
 router.post("/", authenticated, (req, res) => {
-  const {
-    name,
-    name_en,
-    category,
-    image,
-    location,
-    phone,
-    google_map,
-    rating,
-    description
-  } = req.body;
   const restaurant = Restaurant({
-    name: name,
-    name_en: name_en,
-    category: category,
-    image: image,
-    location: location,
-    phone: phone,
-    google_map: google_map,
-    rating: rating,
-    description: description,
+    name: req.body.name,
+    name_en: req.body.name_en,
+    category: req.body.category,
+    image: req.body.image,
+    location: req.body.location,
+    phone: req.body.phone,
+    google_map: req.body.google_map,
+    rating: req.body.rating,
+    description: req.body.description,
     userId: req.user._id
   });
 
