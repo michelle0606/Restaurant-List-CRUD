@@ -1,6 +1,6 @@
 # Restaurant-List
 
-## A web app build with express, a list that user can search restaurant.
+## A web app build with express, a list that user can build restaurant list.
 
 ![](./public/image/homepage.png)
 
@@ -12,6 +12,10 @@
 - you can see the detail of a restaurant
 - you can edit the detail of a restaurant
 - you can delete a restaurant
+- you can register/login
+
+  ![](./public/image/registerpage.png)
+  ![](./public/image/loginpage.png)
 
 ![](./public/image/detailpage.png)
 ![](./public/image/createpage.png)
