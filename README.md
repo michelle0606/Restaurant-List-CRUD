@@ -5,7 +5,7 @@
 ![](./public/image/homepage.png)
 
 ## Features
-
+ 
 - you can see all restaurant on home page
 - you can search restaurant by their name and category
 - you can create a new restaurant list

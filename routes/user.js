@@ -10,10 +10,22 @@ router.get("/login", (req, res) => {
 });
 
 // 登入檢查
-router.post("/login", (req, res, next) => {
-  passport.authenticate("local", {
-    successRedirect: "/",
-    failureRedirect: "/users/login"
+router.post("/login", function(req, res, next) {
+  let errors = [];
+  passport.authenticate("local", function(err, user, info) {
+    if (err) {
+      return next(err);
+    }
+    if (!user) {
+      errors.push({ message: `${info.message}` });
+      return res.render("login", { errors });
+    }
+    req.logIn(user, function(err) {
+      if (err) {
+        return next(err);
+      }
+      return res.redirect("/");
+    });
   })(req, res, next);
 });
 

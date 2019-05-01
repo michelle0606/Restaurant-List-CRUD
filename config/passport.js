@@ -13,7 +13,7 @@ module.exports = passport => {
       }).then(user => {
         if (!user) {
           return done(null, false, {
-            message: "That email is not registered"
+            message: "Email 尚未註冊！"
           });
         }
 
@@ -23,7 +23,7 @@ module.exports = passport => {
             return done(null, user);
           } else {
             return done(null, false, {
-              message: "Email and Password incorrect"
+              message: "密碼輸入錯誤！"
             });
           }
         });
