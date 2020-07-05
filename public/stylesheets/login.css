@@ -1,5 +1,5 @@
 .black-cover {
-  background-image: url("https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5720/restaurants-list-cover.jpg");
+  background-image: url('https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5720/restaurants-list-cover.jpg');
   background-color: #000000;
   background-size: cover;
   z-index: 100;
@@ -61,6 +61,7 @@
 .google-login {
   background-color: #db4975;
   color: #fff;
+  font-weight: 900;
 }
 
 .google-login:hover {

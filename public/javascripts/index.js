@@ -1,6 +1,7 @@
-const searchIcon = document.getElementById("search_icon");
+//search-box
 const iconBox = document.querySelector(".search_icon_box");
 const searchBox = document.querySelector(".search_box");
+const searchIcon = document.getElementById("search_icon");
 
 let closeButton;
 
@@ -13,6 +14,7 @@ searchIcon.addEventListener("click", () => {
   });
 });
 
+// if content was empty
 const cardContent = document.querySelector(".card-columns");
 
 if (cardContent.innerText === "") {
