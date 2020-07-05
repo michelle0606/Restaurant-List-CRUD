@@ -40,7 +40,7 @@ app.use((req, res, next) => {
 // 載入 Passport config
 require('./config/passport')(passport)
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/todo', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/restaurant', {
   useNewUrlParser: true,
   useCreateIndex: true,
 })
